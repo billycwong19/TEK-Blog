@@ -1,0 +1,37 @@
+body {
+    height: 100vh;
+}
+#login-card {
+    width: 30%;
+    box-shadow: 10px 10px 10px rgba(255, 255, 149, 0.795);
+    margin: 3rem auto;
+    border: solid 1px black ;
+}
+
+#login-form {
+    margin: 0 auto;
+    padding: 1rem;
+}
+#login-button {
+    border: none;
+    font-size: 1rem;
+    color: #485fc7;
+    cursor: pointer;
+    text-decoration: none;
+    background-color: white;
+}
+#login-button:hover {
+    color: black;
+}
+
+#sign-up-card {
+    width: 30%;
+    box-shadow: 10px 10px 10px rgba(255, 255, 149, 0.795);
+    margin: 3rem auto;
+    border: solid 1px black ;
+}
+
+#sign-up-form {
+    margin: 0 auto;
+    padding: 1rem;
+}
