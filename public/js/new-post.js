@@ -1,17 +1,15 @@
 const createNewPost = async (event) => {
-    event.preventDefault()
-    const newPostTitle = document.querySelector('#new-post-title')
-    const newPostBody = document.querySelector('#new-post-body')
+    event.preventDefault();
+    const newPostTitle = document.querySelector('#new-post-title');
+    const newPostBody = document.querySelector('#new-post-body');
     
-    const newPost = await fetch('/api/posts/', {
+    const newPost = await fetch('/api/posts', {
         method: 'POST',
         body: JSON.stringify({
                 title: newPostTitle.value,
                 post_body: newPostBody.value,
             }),
-        headers: {
-            'Content Type': 'application/json'
-            }
+            headers: { 'Content-Type': 'application/json' },
         })
 
         if (newPost.ok) {
@@ -21,4 +19,4 @@ const createNewPost = async (event) => {
             }
 }
 
-document.querySelector('#new-post-form').addEventListener('submit', createNewPost)
+document.querySelector("#new-post-form").addEventListener('submit', createNewPost)
