@@ -1,0 +1,42 @@
+<div id="post-box">
+{{#each posts as | post |}}
+<div id="post-content" class="box has-background-grey">
+  <article class="media">
+    <div class="media-left">
+        <span class="icon is-large has-text-warning">
+        <i class="fa-solid fa-file fa-2xl"></i>
+        </span>
+    </div>
+    <div class="media-content">
+      <div id="post-data-box"class="content">
+          <p>
+            <strong>
+              <a href="/single-post" class="has-text-warning title is-1">
+              {{ post.title }}
+              </a>
+          </p>
+      
+            </strong>
+            <small class="has-text-light"> by <a href="" class="has-text-warning subtitle">{{ post.user.username }}</a>
+            </small> 
+            <small class="has-text-light">{{format_date post.createdAt}}</small>
+            <br>
+            <p class="has-text-white">
+            {{post.post_body}}
+            </p>
+      </div>
+      <hr>
+      <nav class="level is-mobile">
+        <div class="level-left">
+          <a class="level-item" aria-label="reply">
+            <span class="icon is-small has-text-warning">
+              <i class="fa-solid fa-comment fa-lg"></i>
+            </span>
+          </a>
+        </div>
+      </nav>
+    </div>
+  </article>
+</div>
+{{/each}}
+</div>

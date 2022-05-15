@@ -7,24 +7,12 @@
       A community effort by developers, engineers, and students to encourage the ease of education in programming
     </p>
     <div class="buttons">
-      {{#if loggedIn}}
-      <a href="/dashboard/new-post" class="button has-background-warning-light">
+        <a href="dashboard/new-post" class="button has-background-warning-light">
             <strong>
             New Post
             </strong>
         </a>
-      {{else}}
-        <a href="/sign-up" class="button has-background-warning-light">
-            <strong>
-            Sign up
-            </strong>
-        </a>
-        <a href="/login" class="button has-background-warning">
-            Log in
-        </a>
-      {{/if}}
     </div>
   </div>
 </section>
 
-{{> posts }}

@@ -1,5 +1,8 @@
 body {
-    height: 100vh;
+    height: 100vh; 
+}
+main {
+    padding: 0 5rem;
 }
 #login-card {
     width: 30%;
@@ -35,3 +38,37 @@ body {
     margin: 0 auto;
     padding: 1rem;
 }
+#sign-up-button {
+    border: none;
+    font-size: 1rem;
+    color: #485fc7;
+    cursor: pointer;
+    text-decoration: none;
+    background-color: white;
+}
+#sign-up-button:hover {
+    color: black;
+}
+
+#new-post-card {
+    width: 30%;
+    box-shadow: 10px 10px 10px rgba(255, 255, 149, 0.795);
+    margin: 3rem auto;
+    border: solid 1px black ;
+}
+
+#new-post-form {
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+#post-box {
+    display: flex;
+}
+
+#post-data-box {
+    display: flex;
+    flex-direction: column;
+    padding-right: 2rem;
+}
+

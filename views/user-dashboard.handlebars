@@ -1,1 +1,19 @@
-<h1>YO</h1>
+<section class="hero is-small is-light">
+  <div class="hero-body">
+    <p class="title">
+      Welcome back, {{ username }}!
+    </p>
+    <p class="subtitle">
+      Make a new post or browse old posts!
+    </p>
+    <div class="buttons">
+        <a href="dashboard/new-post" class="button has-background-warning-light">
+            <strong>
+            New Post
+            </strong>
+        </a>
+    </div>
+  </div>
+</section>
+
+{{> posts }}

@@ -14,12 +14,12 @@
             Username
             </label>
             <div class="control has-icons-left has-icons-right">
-                <input class="input" type="text" placeholder="Username" value="">
+                <input id="username-signup" class="input" type="text" placeholder="Username" value="">
                 <span class="icon is-small is-left">
                     <i class="fas fa-user"></i>
                 </span>
-                <span class="icon is-small is-right">
-                    <i class="fas fa-check"></i>
+                {{!-- <span class="icon is-small is-right">
+                    <i class="fas fa-check"></i> --}}
                 </span>
             </div>
             {{!-- <p class="help is-success">This username is available</p> --}}
@@ -30,12 +30,12 @@
                 Password
             </label>
             <div class="control has-icons-left has-icons-right">
-                <input class="input" type="password" placeholder="Password" value="">
+                <input id="username-password-signup" class="input" type="password" placeholder="Password" value="">
                 <span class="icon is-small is-left">
-                    <i class="fas fa-envelope"></i>
+                    <i class="fa-solid fa-atom"></i>
                 </span>
                 <span class="icon is-small is-right">
-                    <i class="fas fa-exclamation-triangle"></i>
+                    {{!-- <i class="fas fa-exclamation-triangle"></i> --}}
                 </span>
             </div>
             {{!-- <p class="help"></p> --}}
@@ -46,12 +46,12 @@
                 Confirm Password
             </label>
             <div class="control has-icons-left has-icons-right">
-                <input class="input" type="password" placeholder="Confirm Password" value="">
+                <input id="username-password-confirm" class="input" type="password" placeholder="Confirm Password" value="">
                 <span class="icon is-small is-left">
-                    <i class="fas fa-envelope"></i>
+                    <i class="fa-solid fa-atom"></i>
                 </span>
                 <span class="icon is-small is-right">
-                    <i class="fas fa-exclamation-triangle"></i>
+                    <i id="passwordIcon" class=""></i>
                 </span>
             </div>
             {{!-- <p class="help is-danger">This password is invalid</p> --}}
@@ -70,14 +70,20 @@
         <footer class="card-footer">
             <p class="card-footer-item">
                 <span>
-                <a href="/dashboard">Sign Up</a>
+                    <a>
+                        <button id="sign-up-button" type="submit">
+                            Sign Up
+                        </button>
+                    </a>
                 </span>
-                </p>
-                <p class="card-footer-item">
+            </p>
+            <p class="card-footer-item">
                 <span>
-                <a href="/">Cancel</a>
+                    <a href="/">Cancel</a>
                 </span>
-                </p>
+            </p>
         </footer>
     </form>
 </div>
+
+<script src="/js/sign-up.js"></script>
