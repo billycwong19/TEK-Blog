@@ -11,6 +11,19 @@ router.get('/', async (req, res) => {
     }
 })
 
+router.get('/:username', async (req, res) => {
+  try {
+  const user = await User.findOne({
+    where: {
+      username: req.params.username,
+    },
+  });
+  res.json(user)
+  } catch {
+  res.status(400).json(err)
+  }
+})
+
 router.post('/login', async (req, res) => {
   try {
     const user = await User.findOne({

@@ -8,14 +8,20 @@ router.get('/', withAuth, async (req, res) => {
       where: {
         userId: req.session.userId,
       },
-      include: [{ model: User }]
+      include: [{ all: true, nested: true}]
     });
 
+
     const posts = postData.map((post) => post.get({ plain: true }));
-    if (req.session.loggedIn) {
+    console.log(posts)
+    const username = req.session.username
+    const loggedIn = req.session.loggedIn
+    if (loggedIn) {
     res.render('user-dashboard', {
       layout: 'dashboard',
-      posts
+      posts,
+      username,
+      loggedIn
     });
   } 
   } catch (err) {
@@ -29,23 +35,23 @@ router.get('/new-post', withAuth, (req, res) => {
   });
 });
 
-// router.get('/edit/:id', withAuth, async (req, res) => {
-//   try {
-//     const postData = await Post.findByPk(req.params.id);
 
-//     if (postData) {
-//       const post = postData.get({ plain: true });
+router.get('/edit/:id', withAuth, async (req, res) => {
+  try {
+    const postData = await Post.findByPk(req.params.id);
 
-//       res.render('edit-post', {
-//         layout: 'dashboard',
-//         post,
-//       });
-//     } else {
-//       res.status(404).end();
-//     }
-//   } catch (err) {
-//     res.redirect('login');
-//   }
-// });
+    if (postData) {
+      const post = postData.get({ plain: true });
+      res.render('edit-post', {
+        layout: 'dashboard',
+        post,
+      });
+    } else {
+      res.status(404).end();
+    }
+  } catch (err) {
+    res.redirect('login');
+  }
+});
 
 module.exports = router;

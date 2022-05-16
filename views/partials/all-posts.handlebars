@@ -1,0 +1,59 @@
+<div id="post-box">
+{{#each posts as | post |}}
+<div id="post-content" class="box has-background-grey">
+  <article class="media">
+    <div class="media-left">
+        <span class="icon is-large has-text-warning">
+        <i class="fa-solid fa-file fa-2xl"></i>
+        </span>
+        <br>
+    </div>
+    <div class="media-content">
+      <div id="post-data-box"class="content">
+          <p>
+            <strong>
+              <a href="/single-post/{{post.id}}" class="has-text-warning title is-1">
+              {{ post.title }}
+              </a>
+          </p>
+      
+            </strong>
+            <small class="has-text-light"> by <a href="/{{ post.user.username }}" class="has-text-warning subtitle">{{ post.user.username }}</a>
+            </small> 
+            <small class="has-text-light">Created: {{format_date post.createdAt}}</small>
+            <p id="post-body-hide" class="has-text-white" style="display:none;">
+            {{post.post_body}}
+            </p>
+            {{#if post.is_updated}}
+            <small class="has-text-light">Last Updated: {{format_date post.updatedAt}}</small>
+            {{/if}}
+      </div>
+      <hr>
+      <nav class="level is-mobile">
+        <div class="level-left">
+          <a href="/single-post/{{post.id}}"class="level-item" aria-label="reply">
+            <span class="icon is-small has-text-warning">
+              <i class="fa-solid fa-comment fa-lg"></i>
+            </span>
+          </a>
+
+            <button id="show-post-button" class="level-item has-background-grey button" aria-label="reply" style="display:initial;">
+            <span id="view" class="has-text-warning">
+              view
+            </span>
+            </button>
+            <button id="hide-post-button" class="level-item has-background-grey button" aria-label="reply" style="display:none;">
+            <span id="hide" class="has-text-warning">
+              hide
+            </span>
+            </button>
+
+        </div>
+      </nav>
+    </div>
+  </article>
+</div>
+{{/each}}
+</div>
+
+<script src="/js/post-body-hide.js"></script>

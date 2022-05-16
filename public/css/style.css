@@ -61,9 +61,24 @@ main {
     margin: 0 auto;
     padding: 1rem;
 }
+#edit-post-card {
+    width: 30%;
+    box-shadow: 10px 10px 10px rgba(255, 255, 149, 0.795);
+    margin: 3rem auto;
+    border: solid 1px black ;
+}
+
+#edit-post-form {
+    margin: 0 auto;
+    padding: 1rem;
+}
+#post-dropdown-header {
+    width: 100%;
+}
 
 #post-box {
-    display: flex;
+    display: block;
+    width: 100%;
 }
 
 #post-data-box {
@@ -71,4 +86,24 @@ main {
     flex-direction: column;
     padding-right: 2rem;
 }
+#hide-post-button{
+    border: none;
+    box-shadow: none;
+}
+#show-post-button{
+    border: none;
+    box-shadow: none;
+}
+#view:hover {
+    color: darkgrey;
+}
+#add-comment-button {
+    width: 100%;
+}
+
+#comment-box {
+    margin: 1rem 5rem;
+}
+
+
 

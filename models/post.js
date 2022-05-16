@@ -16,7 +16,7 @@ Post.init(
             allowNull: false
         },
         post_body: {
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT,
             allowNull: false
         },
         user_id: {
@@ -25,6 +25,10 @@ Post.init(
                 model: 'user',
                 key: 'id',
             }
+        },
+        is_updated: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false,
         },
     },
     {

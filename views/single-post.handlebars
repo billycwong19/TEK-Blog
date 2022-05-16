@@ -1,0 +1,65 @@
+<section class="hero is-small is-warning">
+  <div class="hero-body">
+    <p class="title is-1">
+      {{title}}
+    </p>
+    <p class="subtitle is-3">
+      by <a href="">{{user.username}}</a>
+    </p>
+    <p class="subtitle is-6">
+    {{format_date createdAt}}
+    </p>
+  </div>
+</section>
+<div class="card">
+  <div class="card-content">
+    <div class="content subtitle is-4">
+      {{post_body}}
+    </div>
+  </div>
+</div>
+<div>
+<button id="add-comment-button" class="button js-modal-trigger" data-target="add-comment-modal">
+<i class="fa-solid fa-plus"></i>Comment
+</button>
+</div>
+
+
+{{#if loggedIn}}
+<div id="add-comment-modal" class="modal">
+  <div class="modal-background"></div>
+
+  <div id="add-comment" class="modal-content">
+    <div class="box card">
+      <form id="comment-form">
+        <input id="post-id-grab" type="text" style="display: none;" value="{{id}}">
+      <p>Comment</p>
+      <textarea id="comment-body" class="textarea" placeholder="Comment"></textarea>
+      <hr>
+    <div>
+      <button class="button" type="submit">Sumbit</button>
+    </div>
+    </form>
+    
+    </div>
+  </div>
+  {{else}}
+  <div id="add-comment-modal" class="modal">
+  <div class="modal-background"></div>
+
+  <div class="modal-content">
+    <div class="box">
+      <p>You have to be logged in to comment.</p>
+    </div>
+  </div>
+  {{/if}}
+
+  <button class="modal-close is-large" aria-label="close"></button>
+</div>
+
+<script src="/js/add-comment.js"></script>
+<script src="/js/modals.js"></script>
+ {{> comments}}
+
+
+

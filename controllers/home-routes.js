@@ -1,6 +1,5 @@
 const router = require('express').Router();
 const { Post, Comment, User } = require('../models/');
-const { beforeDestroy } = require('../models/user');
 const withAuth = require('../utils/auth');
 
 
@@ -21,36 +20,6 @@ router.get('/', async (req, res) => {
     }
   });
 
-// // get single post
-// router.get('/post/:id', async (req, res) => {
-//   try {
-//   const postData = await Post.findByPk(req.params.id,
-//   {
-//     include: [{ model: User }, { model: Comment }]
-//   },
-//   )
-//   const post = postData.get({ plain: true });
-
-//   res.render('single-post',{
-//     ...post,
-//   });
-//   res.status(200)
-// } catch {
-//   res.status(500)
-// }
-// });
-router.get('/', withAuth, (req, res) => {
-  const loggedIn = req.session.loggedIn
-  if (loggedIn) {
-  res.render('home', {
-    layout: 'dashboard',
-  });
-  return;
-} else {
-  res.redirect('/')
-}
-});
-
 router.get('/login', (req, res) => {
   if (req.session.loggedIn) {
     res.redirect('/dashboard');
@@ -64,8 +33,40 @@ router.get('/sign-up', (req, res) => {
     res.redirect('/dashboard');
     return;
   }
-
   res.render('sign-up');
 });
+
+
+router.get('/single-post/:id', async (req, res) => {
+  try {
+  const postData = await Post.findByPk(req.params.id,
+  {
+    include: [{ all: true, nested: true}]
+  },
+  )
+  const post = postData.get({ plain: true });
+  const loggedIn = req.session.loggedIn
+  res.render('single-post',{
+    ...post,
+    loggedIn
+  });
+  res.status(200)
+} catch {
+  res.status(500)
+}
+});
+
+router.get('/', withAuth, (req, res) => {
+  const loggedIn = req.session.loggedIn
+  if (loggedIn) {
+  res.render('home', {
+    layout: 'dashboard',
+  });
+  return;
+} else {
+  res.redirect('/')
+}
+});
+
 
 module.exports = router;
