@@ -4,6 +4,7 @@ const session = require('express-session');
 const exphbs = require('express-handlebars');
 const helpers = require('./utils/helpers');
 
+
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -21,7 +22,7 @@ const sess = {
     db: sequelize
   })
 };
-
+app.use(express.cookieParser());
 
 app.use(session(sess));
 
