@@ -22,7 +22,6 @@ const sess = {
     db: sequelize
   })
 };
-app.use(express.cookieParser());
 
 app.use(session(sess));
 
