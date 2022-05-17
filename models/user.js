@@ -1,13 +1,13 @@
 const { Model, DataTypes } = require('sequelize');
 const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
-
+// User checkPassword method using bcrypt
 class User extends Model {
     checkPassword(loginPw) {
         return bcrypt.compareSync(loginPw, this.password);
     }
 }
-
+// user table with username and password
 User.init(
     {
         id: {
@@ -30,6 +30,7 @@ User.init(
         },
     },
     {
+        // password hash hooks with bcrypt before create, before update, and when seeding in bulk
         hooks: {
             async beforeCreate(newUserData) {
                 newUserData.password = await bcrypt.hash(newUserData.password, 10);

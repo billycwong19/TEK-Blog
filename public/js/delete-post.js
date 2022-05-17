@@ -1,3 +1,4 @@
+// delete post fetch
 const deletePost = async (event) => {
     const postId = document.querySelector('#id-grab')
     event.preventDefault();

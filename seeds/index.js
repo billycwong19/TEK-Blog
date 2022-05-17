@@ -12,3 +12,5 @@ const seedAll = async () => {
 };
 
 seedAll();
+
+// this entire seeds folder is to seed the heroku db before deploying

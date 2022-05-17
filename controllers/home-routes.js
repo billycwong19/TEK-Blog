@@ -20,6 +20,7 @@ router.get('/', async (req, res) => {
     }
   });
 
+  // login page handlebars render
 router.get('/login', (req, res) => {
   if (req.session.loggedIn) {
     res.redirect('/dashboard');
@@ -27,7 +28,7 @@ router.get('/login', (req, res) => {
   }
   res.render('login');
 });
-
+// sign-up page handlebars render
 router.get('/sign-up', (req, res) => {
   if (req.session.loggedIn) {
     res.redirect('/dashboard');
@@ -36,7 +37,7 @@ router.get('/sign-up', (req, res) => {
   res.render('sign-up');
 });
 
-
+// grab single-post by id and render to page
 router.get('/single-post/:id', async (req, res) => {
   try {
   const postData = await Post.findByPk(req.params.id,
@@ -56,6 +57,7 @@ router.get('/single-post/:id', async (req, res) => {
 }
 });
 
+// homepage if logged in
 router.get('/', withAuth, (req, res) => {
   const loggedIn = req.session.loggedIn
   if (loggedIn) {

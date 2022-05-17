@@ -2,7 +2,7 @@ const { Model, DataTypes } = require('sequelize')
 const sequelize = require('../config/connection')
 
 class Post extends Model {}
-
+// post attributes that include title and post_body with a foreign key of user_id that is associated to the user who made the post
 Post.init(
     {
         id:{

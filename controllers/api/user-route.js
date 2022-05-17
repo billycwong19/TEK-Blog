@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const bcrypt = require('bcrypt');
 const { User } = require('../../models');
-
+// find all users
 router.get('/', async (req, res) => {
     try {
     const users = await User.findAll()
@@ -10,7 +10,7 @@ router.get('/', async (req, res) => {
     res.status(400).json(err)
     }
 })
-
+// find single user data by username (not implemented but tested through Insomnia)
 router.get('/:username', async (req, res) => {
   try {
   const user = await User.findOne({
@@ -23,7 +23,7 @@ router.get('/:username', async (req, res) => {
   res.status(400).json(err)
   }
 })
-
+// find single user and validate if user exists, then validate if password is correct, then create a session with user session data
 router.post('/login', async (req, res) => {
   try {
     const user = await User.findOne({
@@ -55,7 +55,7 @@ router.post('/login', async (req, res) => {
     res.status(400).json({ message: 'No user account found!' });
   }
 });
-
+// create a user then instantiate a session with the user logged in
 router.post('/', async (req, res) => {
   try {
     const newUser = await User.create({
@@ -74,7 +74,7 @@ router.post('/', async (req, res) => {
     res.status(500).json(err);
   }
 });
-
+// update user by ID (not implemented but tested through Insomnia)
 router.put('/:id', async (req, res) => {
     try {
       const updatedUser = await User.update(
@@ -99,18 +99,18 @@ router.put('/:id', async (req, res) => {
     }
 });
 
-// Logout
+// log out user destroys session created by login route or create route
 router.post('/logout', (req, res) => {
   if (req.session.loggedIn) {
     req.session.destroy(() => {
       res.status(204).end();
-      console.log('it logged out')
+      console.log('logged out')
     });
   } else {
     res.status(404).end();
   }
 });
-
+// delete user
 router.delete('/:id', async (req, res) => {
   try {
     const userData = await User.destroy({

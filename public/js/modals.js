@@ -1,3 +1,4 @@
+// this page is taken from bulma.io to activate modal on click
 function openModal($el) {
     $el.classList.add('is-active');
 }

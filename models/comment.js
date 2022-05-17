@@ -2,7 +2,7 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
 class Comment extends Model {}
-
+// comment model for comments that include post_id and user_id as foreign keys
 Comment.init(
     {
         id: {

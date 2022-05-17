@@ -1,3 +1,4 @@
+//edit post then replace with /dashboard
 const createEditPost = async (event) => {
     event.preventDefault();
     const editPostTitle = document.querySelector('#edit-post-title');

@@ -1,4 +1,4 @@
-
+// add comment fetch
 const createComment = async (event) => {
     event.preventDefault()
     const postId = document.querySelector('#post-id-grab')

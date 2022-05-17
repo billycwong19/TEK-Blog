@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { Post, Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
-
+// find all posts and include associated comments
 router.get('/', async (req, res) => {
   try {
   const posts = await Post.findAll({
@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
   }
 })
 
-
+// find a single post by ID
 router.get('/:id', withAuth, async (req, res) => {
   try {
     const singlePost= await Post.findByPk(req.params.id, {
@@ -23,7 +23,7 @@ router.get('/:id', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
-
+// create a post based with fetch req.body
 router.post('/', withAuth, async (req, res) => {
   try {
     const newPost = await Post.create({ 
@@ -36,6 +36,7 @@ router.post('/', withAuth, async (req, res) => {
   }
 });
 
+// update a post
 router.put('/:id', withAuth, async (req, res) => {
     try {
       const [affectedRows] = await Post.update(req.body, {
@@ -43,7 +44,7 @@ router.put('/:id', withAuth, async (req, res) => {
           id: req.params.id,
         },
       });
-  
+      // error handling to validate if an update has actually occured
       if (affectedRows > 0) {
         res.status(200).end();
       } else {
@@ -54,7 +55,7 @@ router.put('/:id', withAuth, async (req, res) => {
     }
   });
   
-
+// dele post based on ID
 router.delete('/:id', withAuth, async (req, res) => {
   try {
     const affectedRows = Post.destroy({

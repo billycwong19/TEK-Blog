@@ -1,3 +1,4 @@
+// login user and then replace with dashboard if success otherwise alert
 const loginUser = async (event) => {
     event.preventDefault();
 
